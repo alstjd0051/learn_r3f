@@ -13,7 +13,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <ThreeWrapper />
-        <Suspense fallback={null}>
+        <Suspense fallback={<h1>Loading...</h1>}>
           <ReactQueryDevtools
             initialIsOpen={false}
             buttonPosition="bottom-left"

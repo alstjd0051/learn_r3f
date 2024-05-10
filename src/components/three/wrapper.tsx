@@ -26,7 +26,7 @@ const ThreeWrapper = () => {
       </div>
 
       <Canvas>
-        <OrbitControls /> {/* 카메라 컨트롤러 */}
+        <OrbitControls />
         <ChangeThreeItems />
       </Canvas>
     </div>

@@ -2,11 +2,13 @@ import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Transformation from "../three/scene/transformation";
 import Geometry from "../three/scene/geometry";
+import GeometryTwo from "../three/scene/geometrytwo";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
-  const [SelectedComponent, setSelectedComponent] =
-    useState<React.ReactElement | null>(null);
+  const [SelectedComponent, setSelectedComponent] = useState<
+    (() => JSX.Element) | null
+  >(null);
 
   useQuery({
     queryKey: ["Collections"],
@@ -29,8 +31,8 @@ export const useRtfCollection = () => {
   const handleClick = (componentName: string) => {
     const Component = memoizedCollections.find(
       (item) => item.name === componentName ?? "Transformation"
-    );
-    setSelectedComponent(Component?.Component() || null);
+    )?.Component;
+    setSelectedComponent(() => Component ?? null);
   };
 
   return { data: memoizedCollections, SelectedComponent, handleClick };
@@ -40,5 +42,6 @@ const fetchData = async () => {
   return [
     { name: "Transformation", Component: Transformation },
     { name: "Geometry", Component: Geometry },
+    { name: "Geometry2", Component: GeometryTwo },
   ];
 };
