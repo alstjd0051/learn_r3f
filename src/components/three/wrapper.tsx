@@ -7,7 +7,7 @@ const ThreeWrapper = () => {
   const { data, SelectedComponent, handleClick } = useRtfCollection();
 
   const ChangeThreeItems = useCallback(() => {
-    return SelectedComponent ? SelectedComponent : null;
+    return SelectedComponent ? <SelectedComponent /> : null;
   }, [SelectedComponent]);
 
   return (
