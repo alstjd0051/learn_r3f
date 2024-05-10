@@ -1,13 +1,21 @@
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 const Transformation = () => {
+  const refMesh = useRef<THREE.Mesh>(null);
+  useFrame((_, delta) => {
+    if (!refMesh.current) return;
+    refMesh.current.rotation.z += delta;
+  });
   return (
     <>
       <directionalLight position={[1, 1, 1]} />
       <OrbitControls />
       <axesHelper scale={10} />
       <mesh
+        ref={refMesh}
         position-y={2}
         rotation-z={THREE.MathUtils.degToRad(45)}
         scale={[2, 1, 1]}
