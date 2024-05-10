@@ -1,8 +1,13 @@
+import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import * as THREE from "three";
 
 const Transformation = () => {
   const refMesh = useRef<THREE.Mesh>(null);
+  useFrame((_, delta) => {
+    if (!refMesh.current) return null;
+    refMesh.current.rotation.y += delta;
+  });
   return (
     <>
       <directionalLight position={[1, 1, 1]} />
