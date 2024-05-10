@@ -7,7 +7,7 @@ const ThreeWrapper = () => {
   const { collections } = useRtfCollection();
 
   return (
-    <Canvas className="h-full">
+    <Canvas style={{ height: "100dvh" }}>
       <OrbitControls />
       {collections.map((Component) => (
         <Component />
