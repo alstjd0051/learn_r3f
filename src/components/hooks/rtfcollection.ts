@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Transformation from "../three/scene/transformation";
-import Geometry from "../three/scene/geometry";
-import GeometryTwo from "../three/scene/geometrytwo";
+import Transformation from "../three/geometries/transformation";
+import Geometry from "../three/geometries/geometry";
+import GeometryTwo from "../three/geometries/geometrytwo";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
