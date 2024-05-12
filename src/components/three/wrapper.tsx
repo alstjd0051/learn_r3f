@@ -16,6 +16,7 @@ const ThreeWrapper = () => {
         {data.map(({ name }, idx) => (
           <button
             key={idx}
+            className="hover:text-red-600 text-lg"
             onClick={() => {
               handleClick(name);
             }}
