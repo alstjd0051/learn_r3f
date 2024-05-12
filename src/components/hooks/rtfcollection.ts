@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import Transformation from "../three/geometries/transformation";
 import Geometry from "../three/geometries/geometry";
 import GeometryTwo from "../three/geometries/geometrytwo";
+import Material from "../three/geometries/material";
+import MaterialTwo from "../three/geometries/materialtwo";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
@@ -32,6 +34,7 @@ export const useRtfCollection = () => {
     const Component = memoizedCollections.find(
       (item) => item.name === componentName ?? "Transformation"
     )?.Component;
+
     setSelectedComponent(() => Component ?? null);
   };
 
@@ -43,5 +46,19 @@ const fetchData = async () => {
     { name: "Transformation", Component: Transformation },
     { name: "Geometry", Component: Geometry },
     { name: "Geometry2", Component: GeometryTwo },
+    { name: "Material", Component: Material },
+    { name: "Material2", Component: MaterialTwo },
   ];
+};
+
+export const useWetherAPI = () => {
+  const { data } = useQuery({
+    queryKey: ["weather"],
+    queryFn: async () => {
+      const res = await fetch(import.meta.env.WEATHER_API);
+      const data = await res.json();
+      return data;
+    },
+  });
+  return { data };
 };
