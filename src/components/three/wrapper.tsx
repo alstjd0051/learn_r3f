@@ -30,7 +30,6 @@ const ThreeWrapper = () => {
       }
     }
   }, [SelectedComponent]);
-  console.log(cameraSettings);
 
   return (
     <div className="w-full h-full ">
