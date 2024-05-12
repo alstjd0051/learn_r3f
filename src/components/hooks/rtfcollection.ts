@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import Transformation from "../three/geometries/transformation";
 import Geometry from "../three/geometries/geometry";
 import GeometryTwo from "../three/geometries/geometrytwo";
-import Material from "../three/geometries/material";
-import MaterialTwo from "../three/geometries/materialtwo";
-import MaterialThree from "../three/geometries/materialthree";
+import Material from "../three/material/material";
+import MaterialTwo from "../three/material/materialtwo";
+import MaterialThree from "../three/material/materialthree";
 import { ThreeItem } from "../types/types";
 
 export const useRtfCollection = () => {
@@ -51,6 +51,7 @@ const fetchData = async () => {
     { name: "Material", Component: Material },
     { name: "Material2", Component: MaterialTwo },
     { name: "Material3", Component: MaterialThree },
+    { name: "Light", Component: MaterialThree },
   ];
 };
 
