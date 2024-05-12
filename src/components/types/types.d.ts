@@ -1,4 +1,8 @@
 import { ReactThreeFiber } from "@react-three/fiber";
+interface ThreeItem {
+  name: string;
+  Component: () => React.ReactElement;
+}
 
 declare global {
   module JSX {
@@ -6,8 +10,4 @@ declare global {
       simpleMaterial: ReactThreeFiber.Object3DNode<typeof SimpleMaterial>;
     }
   }
-}
-interface ThreeItem {
-  name: string;
-  Component: () => React.ReactElement;
 }
