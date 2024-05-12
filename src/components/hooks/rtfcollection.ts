@@ -7,6 +7,7 @@ import Material from "../three/material/material";
 import MaterialTwo from "../three/material/materialtwo";
 import MaterialThree from "../three/material/materialthree";
 import { ThreeItem } from "../types/types";
+import Light from "../three/light";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
@@ -34,7 +35,7 @@ export const useRtfCollection = () => {
 
   const handleClick = (componentName: string) => {
     const Component = memoizedCollections.find(
-      (item) => item.name === componentName ?? "Transformation"
+      (item) => item.name === componentName
     )?.Component;
 
     setSelectedComponent(() => Component ?? null);
@@ -51,18 +52,6 @@ const fetchData = async () => {
     { name: "Material", Component: Material },
     { name: "Material2", Component: MaterialTwo },
     { name: "Material3", Component: MaterialThree },
-    { name: "Light", Component: MaterialThree },
+    { name: "Light", Component: Light },
   ];
-};
-
-export const useWetherAPI = () => {
-  const { data } = useQuery({
-    queryKey: ["weather"],
-    queryFn: async () => {
-      const res = await fetch(import.meta.env.WEATHER_API);
-      const data = await res.json();
-      return data;
-    },
-  });
-  return { data };
 };

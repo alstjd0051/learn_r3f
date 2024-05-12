@@ -1,14 +1,36 @@
 import { Canvas } from "@react-three/fiber";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRtfCollection } from "../hooks/rtfcollection";
 import { OrbitControls } from "@react-three/drei";
+import { Vector3 } from "three";
 
 const ThreeWrapper = () => {
   const { data, SelectedComponent, handleClick } = useRtfCollection();
+  const [cameraSettings, setCameraSettings] = useState({
+    fov: 75,
+    position: new Vector3(7, 7, 0),
+  });
 
   const ChangeThreeItems = useCallback(() => {
     return SelectedComponent ? <SelectedComponent /> : null;
   }, [SelectedComponent]);
+
+  useEffect(() => {
+    if (SelectedComponent) {
+      if (SelectedComponent.name === "Light") {
+        setCameraSettings({
+          fov: 75,
+          position: new Vector3(7, 7, 0),
+        });
+      } else {
+        setCameraSettings({
+          fov: 60,
+          position: new Vector3(5, 5, 5),
+        });
+      }
+    }
+  }, [SelectedComponent]);
+  console.log(cameraSettings);
 
   return (
     <div className="w-full h-full ">
@@ -26,7 +48,7 @@ const ThreeWrapper = () => {
         ))}
       </div>
 
-      <Canvas>
+      <Canvas camera={{ ...cameraSettings }}>
         <OrbitControls />
         <ChangeThreeItems />
       </Canvas>
