@@ -1,15 +1,15 @@
 import { Canvas } from "@react-three/fiber";
 import { useCallback, useEffect, useState } from "react";
-import { useRtfCollection } from "../hooks/rtfcollection";
 import { OrbitControls } from "@react-three/drei";
 import { Vector3 } from "three";
+import { useRtfCollection } from "../hooks/rtfcollection";
 
 const ThreeWrapper = () => {
-  const { data, SelectedComponent, handleClick } = useRtfCollection();
   const [cameraSettings, setCameraSettings] = useState({
     fov: 75,
     position: new Vector3(7, 7, 0),
   });
+  const { data, SelectedComponent, handleClick } = useRtfCollection();
 
   const ChangeThreeItems = useCallback(() => {
     return SelectedComponent ? <SelectedComponent /> : null;
@@ -34,7 +34,7 @@ const ThreeWrapper = () => {
   return (
     <div className="w-full h-full ">
       <div className="mx-auto w-fit space-x-5 pt-5 space-y-5">
-        {data.map(({ name }, idx) => (
+        {data?.map(({ name }, idx) => (
           <button
             key={idx}
             className="hover:text-red-600 text-lg"
