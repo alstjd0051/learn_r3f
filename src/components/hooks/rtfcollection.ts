@@ -6,7 +6,6 @@ import GeometryTwo from "../three/geometries/geometrytwo";
 import Material from "../three/material/material";
 import MaterialTwo from "../three/material/materialtwo";
 import MaterialThree from "../three/material/materialthree";
-import { ThreeItem } from "../types/types";
 import Light from "../three/light";
 
 export const useRtfCollection = () => {
