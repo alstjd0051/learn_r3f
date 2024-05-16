@@ -4,7 +4,7 @@
 
 @layer base {
   #root {
-    @apply m-auto p-0 w-full h-dvh dark:bg-black/90;
+    @apply m-auto p-0 w-full h-dvh dark:bg-black;
   }
   nav {
     @apply text-white;

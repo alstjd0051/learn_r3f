@@ -6,7 +6,10 @@ import GeometryTwo from "../three/geometries/geometrytwo";
 import Material from "../three/material/material";
 import MaterialTwo from "../three/material/materialtwo";
 import MaterialThree from "../three/material/materialthree";
-import Light from "../three/light";
+import AmbientLight from "../three/light/ambientLight";
+import HemisphereLight from "../three/light/hemisphereLight";
+import DirectionalLight from "../three/light/directionalLight";
+import PointLight from "../three/light/pointLight";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
@@ -51,6 +54,9 @@ const fetchData = async () => {
     { name: "Material", Component: Material },
     { name: "Material2", Component: MaterialTwo },
     { name: "Material3", Component: MaterialThree },
-    { name: "Light", Component: Light },
+    { name: "ambientLight", Component: AmbientLight },
+    { name: "hemisphereLight", Component: HemisphereLight },
+    { name: "directionalLight", Component: DirectionalLight },
+    { name: "pointLight", Component: PointLight },
   ];
 };

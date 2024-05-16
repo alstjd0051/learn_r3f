@@ -18,7 +18,7 @@ const ThreeWrapper = () => {
 
   useEffect(() => {
     if (SelectedComponent) {
-      if (SelectedComponent.name === "Light") {
+      if (SelectedComponent.name.includes("Light")) {
         setCameraSettings({
           fov: 75,
           position: new Vector3(7, 7, 0),
@@ -34,7 +34,7 @@ const ThreeWrapper = () => {
 
   return (
     <div className="w-full">
-      <nav className="mx-auto w-fit space-x-5 pt-5 space-y-5 ">
+      <nav className="grid grid-cols-2 gap-y-3 md:gap-y-5 md:grid-cols-5  gap-x-5 max-w-xl md:max-w-2xl xl:max-w-3xl mx-auto">
         {data?.map(({ name }, idx) => (
           <button
             key={idx}
