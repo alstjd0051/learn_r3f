@@ -14,8 +14,8 @@ function App() {
 
   return (
     <>
-      <Header />
       <QueryClientProvider client={queryClient}>
+        <Header />
         <Routes>
           <Route
             path="/"

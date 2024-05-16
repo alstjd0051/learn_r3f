@@ -9,6 +9,7 @@ const ThreeWrapper = () => {
     fov: 75,
     position: new Vector3(7, 7, 0),
   });
+
   const { data, SelectedComponent, handleClick } = useRtfCollection();
 
   const ChangeThreeItems = useCallback(() => {
@@ -32,12 +33,12 @@ const ThreeWrapper = () => {
   }, [SelectedComponent]);
 
   return (
-    <div className="w-full h-full ">
-      <div className="mx-auto w-fit space-x-5 pt-5 space-y-5">
+    <div className="w-full">
+      <nav className="mx-auto w-fit space-x-5 pt-5 space-y-5 ">
         {data?.map(({ name }, idx) => (
           <button
             key={idx}
-            className="hover:text-red-600 text-lg"
+            className="hover:text-red-600 text-lg text-black dark:text-white cursor-pointer"
             onClick={() => {
               handleClick(name);
             }}
@@ -45,9 +46,9 @@ const ThreeWrapper = () => {
             {name}
           </button>
         ))}
-      </div>
+      </nav>
 
-      <Canvas camera={{ ...cameraSettings }}>
+      <Canvas style={{ height: `90dvh` }} camera={{ ...cameraSettings }}>
         <OrbitControls />
         <ChangeThreeItems />
       </Canvas>

@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTheme } from "../../hooks/theme";
 
 const Header = () => {
-  const [dark, setDark] = useState(false);
-  const darkModeHandler = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
+  const { theme, toggleTheme } = useTheme();
+  const handleToggle = () => {
+    toggleTheme();
   };
   return (
-    <div>
-      <button onClick={() => darkModeHandler()}>
-        {dark && "dark"}
-        {!dark && "light"}
+    <nav className="flex h-20 items-center justify-between">
+      <button onClick={handleToggle} className="cursor-pointer text-2xl ">
+        {theme ? "🌞" : "🌜"}
       </button>
-    </div>
+    </nav>
   );
 };
 
