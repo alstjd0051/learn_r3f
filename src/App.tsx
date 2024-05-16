@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useChangeTools, useClient } from "./components/lib/tanstack";
 import { Route, Routes } from "react-router-dom";
 import ErrorBoundary from "./components/units/error";
+import Header from "./components/commons/layout/header";
 
 function App() {
   const queryClient = useClient();
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route
