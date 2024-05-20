@@ -7,7 +7,7 @@ const Header = () => {
     toggleTheme();
   };
   return (
-    <nav className="flex h-20 items-center justify-between">
+    <nav className="flex h-20 items-center justify-between bg-transparent fixed z-50">
       <button onClick={handleToggle} className="cursor-pointer text-2xl ">
         {theme ? "🌞" : "🌜"}
       </button>
