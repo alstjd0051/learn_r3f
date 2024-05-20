@@ -10,6 +10,7 @@ import AmbientLight from "../three/light/ambientLight";
 import HemisphereLight from "../three/light/hemisphereLight";
 import DirectionalLight from "../three/light/directionalLight";
 import PointLight from "../three/light/pointLight";
+import SpotLight from "../three/light/spotLight";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
@@ -58,5 +59,6 @@ const fetchData = async () => {
     { name: "hemisphereLight", Component: HemisphereLight },
     { name: "directionalLight", Component: DirectionalLight },
     { name: "pointLight", Component: PointLight },
+    { name: "spotLight", Component: SpotLight },
   ];
 };
