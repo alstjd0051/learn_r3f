@@ -48,7 +48,7 @@ const ThreeWrapper = () => {
         ))}
       </nav>
 
-      <Canvas style={{ height: `90dvh` }} camera={{ ...cameraSettings }}>
+      <Canvas style={{ height: `100dvh` }} camera={{ ...cameraSettings }}>
         <OrbitControls />
         <ChangeThreeItems />
       </Canvas>
