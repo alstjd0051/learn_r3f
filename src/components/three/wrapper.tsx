@@ -34,11 +34,11 @@ const ThreeWrapper = () => {
 
   return (
     <div className="w-full">
-      <nav className="grid grid-cols-2 gap-y-3 md:gap-y-5 md:grid-cols-5  gap-x-5 max-w-xl md:max-w-2xl xl:max-w-3xl mx-auto">
+      <nav className="grid grid-cols-2 gap-y-3 md:gap-y-5 md:grid-cols-5   gap-x-5 max-w-2xl md:max-w-3xl xl:max-w-4xl mx-auto ">
         {data?.map(({ name }, idx) => (
           <button
             key={idx}
-            className="hover:text-red-600 text-lg text-black dark:text-white cursor-pointer"
+            className="hover:text-red-600 text-balance  lg:text-lg text-black dark:text-white cursor-pointer uppercase"
             onClick={() => {
               handleClick(name);
             }}
