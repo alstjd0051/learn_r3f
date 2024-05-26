@@ -18,3 +18,58 @@
 - SpotLight(조명광)
 - RectAreaLight(형광등처럼 비추는 빛)
 - Environment(주위 환경을 촬영한 이미지를 이용한 빛) - Drei에서만 사용가능
+
+# Camera
+
+가장 크게 두개로 나뉜다.
+
+> 공동점은 절두체(Frustum)이다.
+> 절두체는 카메라가 보는 화면의 크기를 결정한다.
+
+1. Perspective Camera
+   - 원근감을 제공하는 카메라
+2. Orthographic Camera
+   - 원근감이 없는 카메라
+
+# Perspective Camera
+
+카메라 생성을 위한 파라미터(절두체를 정의하기 위한 값들)
+
+<div style="display:flex;column-gap:5rem;">
+
+<div>
+<img src="./public/study/frustum.png" />
+    <li> 화각(Fovy)</**li**> 
+    <li> 화면비율(Aspect)</li>
+    <li> 절두체에 대한 가장 가까운 거리 (zNear)</li>
+    <li> 절두체에 대한 가장 먼 거리 (zFar)</li>
+</div>
+<div>
+    <img src="./public/study/frustum2.png" />
+    <li>절두체의 XLeft,xRight</li>
+    <li>절두체의 yTop,yBottom</li>
+    <li>절두체에 대한 가장 가까운 거리 Near</li>
+    <li>절두체에 대한 가장 먼 거리 Far</li>
+</div>
+</div>
+
+# Orthographic Camera
+
+카메라 생성을 위한 파라미터(절두체를 정의하기 위한 값들)
+
+<div style="display:flex;column-gap:5rem;">
+
+<div>
+<img src="./public/study/Orthographic.png" />
+    <li> 화각(Fovy)</li> 
+    <li> 화면비율(Aspect)</li>
+    <li> 절두체에 대한 가장 가까운 거리 (zNear)</li>
+    <li> 절두체에 대한 가장 먼 거리 (zFar)</li>
+</div>
+<div>
+    <img src="./public/study/Orthographic2.png" />
+    <li>절두체의 XLeft,xRight</li>
+    <li>절두체의 yTop,yBottom</li>
+    <li>절두체에 대한 가장 가까운 거리 Near</li>
+    <li>절두체에 대한 가장 먼 거리 Far</li>
+</div>
