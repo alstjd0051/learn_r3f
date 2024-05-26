@@ -9,7 +9,7 @@ import { RectAreaLightHelper, RectAreaLightUniformsLib } from "three-stdlib";
 
 RectAreaLightUniformsLib.init();
 
-const PerspectiveCamera = () => {
+const OrthographicCamera = () => {
   const TorusMesh = useMemo(() => {
     return (
       <mesh
@@ -54,25 +54,6 @@ const PerspectiveCamera = () => {
     RectAreaLightHelper,
     "#fff"
   );
-
-  /* 
-  const { camera } = useThree();
-  useControls({
-    positionZ: {
-      value: 0,
-      min: -10,
-      max: 10,
-      step: 0.1,
-      onChange: (v) => (camera.position.z = v), // 카메라의 z축을 변경
-    },
-    targetZ: {
-      value: 0,
-      min: -10,
-      max: 10,
-      step: 0.1,
-      onChange: (v) => camera.lookAt(0, 0, v), // 카메라의 시선을 변경
-    },
-  }); */
 
   return (
     <>
@@ -123,4 +104,4 @@ const PerspectiveCamera = () => {
   );
 };
 
-export default PerspectiveCamera;
+export default OrthographicCamera;
