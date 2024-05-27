@@ -13,6 +13,11 @@ import PointLight from "../three/light/pointLight";
 import SpotLight from "../three/light/spotLight";
 import RectAreaLight from "../three/light/rectAreaLight";
 import EnvironmentLight from "../three/light/environmentLight";
+import OrthographicCamera from "../three/camera/orthographic_camera";
+import PerspectiveCamera from "../three/camera/camera";
+import DirectionalLightShadow from "../three/shadow/directionalLight";
+import PointLightShadow from "../three/shadow/pointLight";
+import SpotLightShadow from "../three/shadow/spotLight";
 
 export const useRtfCollection = () => {
   const [collections, setCollections] = useState<ThreeItem[]>([]);
@@ -64,5 +69,10 @@ const fetchData = async () => {
     { name: "spotLight", Component: SpotLight },
     { name: "rectAreaLight", Component: RectAreaLight },
     { name: "environment", Component: EnvironmentLight },
+    { name: "Perspective Camera", Component: PerspectiveCamera },
+    { name: "Orthographic Camera", Component: OrthographicCamera },
+    { name: "Directional Light Shadow", Component: DirectionalLightShadow },
+    { name: "Point Light Shadow", Component: PointLightShadow },
+    { name: "Spot Light Shadow", Component: SpotLightShadow },
   ];
 };
