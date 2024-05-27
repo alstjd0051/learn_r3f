@@ -46,7 +46,7 @@ const ThreeWrapper = () => {
           zoom: 100,
         });
         setOrthographicCamera(true);
-      } else if (SelectedComponent.name === "DirectionalLightShadow") {
+      } else if (SelectedComponent.name.includes("Shadow")) {
         setCameraSettings({
           near: 1,
           far: 100,
@@ -64,7 +64,6 @@ const ThreeWrapper = () => {
       }
     }
   }, [SelectedComponent]);
-  console.log(SelectedComponent?.name);
 
   const CameraWrapper = useCallback(() => {
     return (

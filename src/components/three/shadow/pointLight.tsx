@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
+import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
-const DirectionalLightShadow = () => {
+const PointLightShadow = () => {
   const smallSpherePivot = useRef<THREE.Group>(null);
-  const lightRef = useRef<THREE.DirectionalLight>(null);
-  const { scene } = useThree();
-  const shadowCameraRef = useRef<THREE.DirectionalLight>(null);
+  const pointLight = useRef<THREE.PointLight>(null);
   const TorusMesh = useMemo(() => {
     return (
       <mesh
@@ -27,47 +26,26 @@ const DirectionalLightShadow = () => {
   }, []);
 
   useFrame((state) => {
-    if (!smallSpherePivot.current || !lightRef.current) return;
+    if (!smallSpherePivot.current || !pointLight.current) return;
     const time = state.clock.elapsedTime;
     smallSpherePivot.current.rotation.y = THREE.MathUtils.degToRad(time * 50);
     smallSpherePivot.current.children[0].getWorldPosition(
-      lightRef.current.target.position
+      pointLight.current?.position
     );
   });
-
-  useEffect(() => {
-    if (!lightRef.current || !shadowCameraRef.current) return;
-    scene.add(lightRef.current.target);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    shadowCameraRef.current = new THREE.CameraHelper(
-      lightRef.current.shadow.camera
-    );
-    if (!shadowCameraRef.current) return;
-    scene.add(shadowCameraRef.current);
-
-    return () => {
-      if (!lightRef.current) return;
-      scene.remove(lightRef.current.target);
-    };
-  }, [scene]);
 
   return (
     <>
       <ambientLight intensity={0.1} />
-      <directionalLight
-        ref={lightRef}
+
+      <pointLight
         castShadow
-        shadow-camera-top={6}
-        shadow-camera-bottom={-6}
-        shadow-camera-left={-6}
-        shadow-camera-right={6}
-        shadow-mapSize={[512 * 4, 512 * 4]}
+        ref={pointLight}
         color={0xffffff}
-        intensity={0.9}
+        intensity={1}
         position={[0, 5, 0]}
-        target-position={[0, 0, 0]}
       />
+
       <mesh receiveShadow rotation-x={THREE.MathUtils.degToRad(-90)}>
         <planeGeometry args={[10, 10]} />
         <meshStandardMaterial
@@ -105,4 +83,4 @@ const DirectionalLightShadow = () => {
   );
 };
 
-export default DirectionalLightShadow;
+export default PointLightShadow;
