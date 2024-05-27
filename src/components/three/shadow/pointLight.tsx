@@ -36,7 +36,7 @@ const PointLightShadow = () => {
 
   return (
     <>
-      <ambientLight intensity={0.1} />
+      <ambientLight intensity={1} />
 
       <pointLight
         castShadow
