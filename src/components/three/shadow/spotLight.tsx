@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
 const SpotLightShadow = () => {
