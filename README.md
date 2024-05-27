@@ -73,3 +73,29 @@
     <li>절두체에 대한 가장 가까운 거리 Near</li>
     <li>절두체에 대한 가장 먼 거리 Far</li>
 </div>
+</div>
+
+# Shadow
+
+### 그림자를 지원하는 광원
+
+- DirectionalLight
+- SpotLight
+- PointLight
+
+### Drei에서 제공하는 그림자 컴포넌트
+
+- AccumulativeShadowMap
+- ContactShadow
+- SoftShadows
+
+### Three.js의 그림자 알고리즘
+
+- BasicShadowMap
+  - 필터링 없는 그림자 맵을 제공하며 속도는 빠르지만 품질이 나쁨
+- PCFShadowMap
+  - Percentage-Closer Filtering 알고리즘이 적용된 그림자 맵 생성
+- PCFSoftShadowMap
+  - 개선된 Percentage-Closer Filtering 알고리즘이 적용된 그림자 맵 생성(R3F의 기본값)
+- VSMShadowMap
+  - Variance Shadow Map 알고리즘이 적용된 그림자 맵 생성

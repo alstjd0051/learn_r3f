@@ -8,14 +8,11 @@ import { Vector3 } from "three";
 const ThreeWrapper = () => {
   const [cameraSettings, setCameraSettings] = useState<CameraSettings>({
     fov: 75,
-    near: 0.1,
-    far: 20,
-    position: new Vector3(7, 7, 0),
-    zoom: 100,
+    position: [7, 7, 0],
   });
   const CanvasRef = useRef<HTMLCanvasElement>(null);
   const [OrthographicCamera, setOrthographicCamera] = useState(false);
-  const [shadow, setShadow] = useState(false);
+  const [shadow, setShadow] = useState<boolean | "variance">(false);
   const { data, SelectedComponent, handleClick } = useRtfCollection();
 
   const ChangeThreeItems = useCallback(() => {
@@ -54,6 +51,14 @@ const ThreeWrapper = () => {
         });
         setOrthographicCamera(false);
         setShadow(true);
+      } else if (SelectedComponent.name.includes("SpotLightShadow")) {
+        setCameraSettings({
+          near: 1,
+          far: 100,
+          position: new Vector3(7, 7, 0),
+        });
+        setOrthographicCamera(false);
+        setShadow("variance");
       } else {
         setCameraSettings({
           fov: 60,
@@ -84,6 +89,8 @@ const ThreeWrapper = () => {
     cameraSettings,
     shadow,
   ]);
+
+  console.log(shadow);
 
   return (
     <div className="w-full h-dvh overflow-hidden">
