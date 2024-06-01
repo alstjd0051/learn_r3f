@@ -14,8 +14,9 @@ import EnvironmentLight from "../three/light/environmentLight";
 import OrthographicCamera from "../three/camera/orthographic_camera";
 import PerspectiveCamera from "../three/camera/camera";
 import DirectionalLightShadow from "../three/shadow/directionalLight";
-import PointLightShadow from "../three/shadow/pointLight";
+import PointLightShadow from "../three/shadow/pointLightShadow";
 import SpotLightShadow from "../three/shadow/spotLight";
+import AccumulativeShadows from "../three/shadow/accumulativeShadows";
 
 export const R3FDatas = async () => {
   return [
@@ -37,5 +38,6 @@ export const R3FDatas = async () => {
     { name: "Directional Light Shadow", Component: DirectionalLightShadow },
     { name: "Point Light Shadow", Component: PointLightShadow },
     { name: "Spot Light Shadow", Component: SpotLightShadow },
+    { name: "Accumulative Shadows", Component: AccumulativeShadows },
   ];
 };

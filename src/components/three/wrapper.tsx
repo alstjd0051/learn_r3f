@@ -1,13 +1,14 @@
 import { Canvas } from "@react-three/fiber";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
+import { Vector3 } from "three";
 
 import { useRtfCollection } from "../hooks/rtfcollection";
-import { Vector3 } from "three";
 
 const ThreeWrapper = () => {
   const [cameraSettings, setCameraSettings] = useState<CameraSettings>({
     fov: 75,
+
     position: [7, 7, 0],
   });
   const CanvasRef = useRef<HTMLCanvasElement>(null);
@@ -52,17 +53,15 @@ const ThreeWrapper = () => {
         setOrthographicCamera(false);
         setShadow(true);
       } else if (SelectedComponent.name.includes("SpotLightShadow")) {
-        setCameraSettings({
-          near: 1,
-          far: 100,
-          position: new Vector3(7, 7, 0),
-        });
         setOrthographicCamera(false);
         setShadow("variance");
       } else {
         setCameraSettings({
           fov: 60,
           position: [5, 5, 5],
+          near: 0,
+          far: 0,
+          zoom: 0,
         });
         setOrthographicCamera(false);
         setShadow(false);
@@ -89,8 +88,6 @@ const ThreeWrapper = () => {
     cameraSettings,
     shadow,
   ]);
-
-  console.log(shadow);
 
   return (
     <div className="w-full h-dvh overflow-hidden">

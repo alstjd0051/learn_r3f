@@ -99,3 +99,7 @@
   - 개선된 Percentage-Closer Filtering 알고리즘이 적용된 그림자 맵 생성(R3F의 기본값)
 - VSMShadowMap
   - Variance Shadow Map 알고리즘이 적용된 그림자 맵 생성
+- Drei에서 제공하는 그림자 컴포넌트
+  - AccumulativeShadows
+  - ContactShadows
+  - SoftShadows

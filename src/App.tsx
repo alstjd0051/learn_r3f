@@ -7,6 +7,7 @@ import { useChangeTools, useClient } from "./components/lib/tanstack";
 import { Route, Routes } from "react-router-dom";
 import ErrorBoundary from "./components/units/error";
 import Header from "./components/commons/layout/header";
+import TestWrapper from "./components/commons/item/test";
 
 function App() {
   const queryClient = useClient();
@@ -22,6 +23,7 @@ function App() {
             element={<ThreeWrapper />}
             errorElement={<ErrorBoundary />}
           />
+          <Route path="/test" element={<TestWrapper />} />
           <Route path="/:id" element={<ErrorBoundary />} />
         </Routes>
 
