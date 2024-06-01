@@ -1,78 +1,33 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Transformation from "../three/geometries/transformation";
-import Geometry from "../three/geometries/geometry";
-import GeometryTwo from "../three/geometries/geometrytwo";
-import Material from "../three/material/material";
-import MaterialTwo from "../three/material/materialtwo";
-import MaterialThree from "../three/material/materialthree";
-import AmbientLight from "../three/light/ambientLight";
-import HemisphereLight from "../three/light/hemisphereLight";
-import DirectionalLight from "../three/light/directionalLight";
-import PointLight from "../three/light/pointLight";
-import SpotLight from "../three/light/spotLight";
-import RectAreaLight from "../three/light/rectAreaLight";
-import EnvironmentLight from "../three/light/environmentLight";
-import OrthographicCamera from "../three/camera/orthographic_camera";
-import PerspectiveCamera from "../three/camera/camera";
-import DirectionalLightShadow from "../three/shadow/directionalLight";
-import PointLightShadow from "../three/shadow/pointLight";
-import SpotLightShadow from "../three/shadow/spotLight";
+
+import { R3FDatas } from "../assets/threeComponents";
 
 export const useRtfCollection = () => {
-  const [collections, setCollections] = useState<ThreeItem[]>([]);
   const [SelectedComponent, setSelectedComponent] = useState<
     (() => JSX.Element) | null
   >(null);
 
-  useQuery({
+  const { data: queryData } = useQuery({
     queryKey: ["Collections"],
     queryFn: async () => {
-      const result = await fetchData();
-
-      setCollections(
-        result.map(({ Component, name }) => ({
-          name,
-          Component: Component as () => JSX.Element,
-        }))
-      );
-      return result;
+      const result = await R3FDatas();
+      return result.map(({ Component, name }) => ({
+        name,
+        Component: Component as () => JSX.Element,
+      }));
     },
     staleTime: Infinity,
   });
 
-  const memoizedCollections = useMemo(() => collections, [collections]);
+  const memoizedCollections = useMemo(() => queryData ?? [], [queryData]);
 
   const handleClick = (componentName: string) => {
-    const Component = memoizedCollections.find(
+    const foundComponent = memoizedCollections.find(
       (item) => item.name === componentName
     )?.Component;
-
-    setSelectedComponent(() => Component ?? null);
+    setSelectedComponent(() => foundComponent ?? null);
   };
 
   return { data: memoizedCollections, SelectedComponent, handleClick };
-};
-
-const fetchData = async () => {
-  return [
-    { name: "Transformation", Component: Transformation },
-    { name: "Geometry", Component: Geometry },
-    { name: "Geometry2", Component: GeometryTwo },
-    { name: "Material", Component: Material },
-    { name: "Material2", Component: MaterialTwo },
-    { name: "Material3", Component: MaterialThree },
-    { name: "ambientLight", Component: AmbientLight },
-    { name: "hemisphereLight", Component: HemisphereLight },
-    { name: "directionalLight", Component: DirectionalLight },
-    { name: "pointLight", Component: PointLight },
-    { name: "spotLight", Component: SpotLight },
-    { name: "rectAreaLight", Component: RectAreaLight },
-    { name: "environment", Component: EnvironmentLight },
-    { name: "Perspective Camera", Component: PerspectiveCamera },
-    { name: "Orthographic Camera", Component: OrthographicCamera },
-    { name: "Directional Light Shadow", Component: DirectionalLightShadow },
-    { name: "Point Light Shadow", Component: PointLightShadow },
-    { name: "Spot Light Shadow", Component: SpotLightShadow },
-  ];
 };
